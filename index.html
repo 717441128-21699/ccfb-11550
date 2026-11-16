@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parquet 本地拆解工具</title>
+    <link rel="stylesheet" href="/src/ui/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="logo">▚</span>
+          <div>
+            <h1>Parquet 拆解工具</h1>
+            <p class="sub">纯前端 · 本地解析 · 不依赖任何 Parquet 库 · 文件不出浏览器</p>
+          </div>
+        </div>
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="选择或拖入 Parquet 文件">
+          <input type="file" id="fileInput" accept=".parquet" hidden />
+          <strong>拖入 .parquet 文件</strong>
+          <span>或点击选择（本地读取，支持 2GB 级随机访问）</span>
+        </div>
+      </header>
+
+      <main class="grid" id="grid" hidden>
+        <section class="panel" id="panel-overview">
+          <h2>① 文件概览</h2>
+          <div id="overview" class="panel-body"></div>
+        </section>
+
+        <section class="panel" id="panel-rowgroups">
+          <h2>② 行组与列块</h2>
+          <div class="panel-body">
+            <div id="rgList" class="rg-list"></div>
+            <div id="chunkDetail" class="chunk-detail">
+              <p class="hint">在上方选择一个列块查看详情</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-pages">
+          <h2>③ 页级明细</h2>
+          <div id="pages" class="panel-body">
+            <p class="hint">选择列块后展示每页的编码与压缩状态</p>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-data">
+          <h2>④ 数据浏览</h2>
+          <div class="panel-body">
+            <div class="data-controls">
+              <button id="prevPage" class="btn">上一页</button>
+              <span id="pageInfo" class="page-info">–</span>
+              <button id="nextPage" class="btn">下一页</button>
+              <label class="toggle"><input type="checkbox" id="rawToggle" /> 显示物理值</label>
+            </div>
+            <div id="tableWrap" class="table-wrap"></div>
+          </div>
+        </section>
+      </main>
+
+      <div id="dropOverlay" class="drop-overlay" hidden>松开即可解析文件</div>
+      <div id="errorBanner" class="error-banner" hidden></div>
+    </div>
+    <script type="module" src="/src/ui/main.ts"></script>
+  </body>
+</html>

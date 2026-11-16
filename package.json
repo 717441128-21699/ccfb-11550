@@ -1,0 +1,23 @@
+{
+  "name": "parquet-inspector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser-based Parquet file inspector with a hand-written parser (no Parquet libraries)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "gen": "py tests/generate_files.py",
+    "test": "tsx tests/run_tests.ts",
+    "test:e2e": "playwright test --config=playwright.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^22.20.5",
+    "playwright": "^1.65.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
